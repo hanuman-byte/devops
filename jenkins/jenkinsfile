@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('System Details') {
+            steps {
+                sh '''
+                echo "===== SYSTEM DETAILS ====="
+                uname -a
+                '''
+            }
+        }
+
+        stage('Memory Details') {
+            steps {
+                sh '''
+                echo "===== MEMORY DETAILS ====="
+                free -h
+                '''
+            }
+        }
+
+        stage('CPU Details') {
+            steps {
+                sh '''
+                echo "===== CPU DETAILS ====="
+                lscpu
+                '''
+            }
+        }
+
+        stage('Today Date') {
+            steps {
+                sh '''
+                echo "===== TODAY DATE ====="
+                date "+%Y-%m-%d %H:%M:%S"
+                '''
+            }
+        }
+    }
+}
